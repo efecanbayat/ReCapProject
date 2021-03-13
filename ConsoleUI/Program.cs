@@ -10,34 +10,74 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
+            CarTest();
+
+            //BrandTest();
+
+            //ColorTest();
+
+        }
+
+        private static void ColorTest()
+        {
+            ColorManager colorManager = new ColorManager(new EfColorDal());
+
+            //colorManager.Add(new Color { Id = 4, Name = "Kırmızı" });
+            //colorManager.Update(new Color { Id = 4, Name = "Mavi" });
+            //colorManager.Delete(new Color { Id = 4, Name = "Mavi" });
+            //Console.WriteLine(colorManager.GetById(1).Name);
+
+            Console.WriteLine("--------Colors--------");
+            foreach (var color in colorManager.GetAll())
+            {
+                Console.WriteLine(color.Name);
+            }
+
+            
+        }
+
+        private static void BrandTest()
+        {
+            BrandManager brandManager = new BrandManager(new EfBrandDal());
+
+            //brandManager.Add(new Brand { Id = 4, Name = "Volkswagen" });
+            //brandManager.Update(new Brand { Id = 4, Name = "Audi" });
+            //brandManager.Delete(new Brand { Id = 4, Name = "Audi" });
+            //Console.WriteLine(brandManager.GetById(1).Name);
+
+            Console.WriteLine("--------Brands--------");
+            foreach (var brand in brandManager.GetAll())
+            {
+                Console.WriteLine(brand.Name);
+            }
+        }
+
+        private static void CarTest()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            Console.WriteLine("--------GetAll ile gelen liste--------");
-            foreach (var car in carManager.GetAll())
+            //carManager.Add(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900000, Description = "Velar" });
+            //carManager.Update(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 1000000, Description = "Velar" });
+            //carManager.Delete(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900000, Description = "Velar" });
+            //Console.WriteLine(carManager.GetById(1).Description); 
+
+            //Console.WriteLine("--------GetCarsByBrandId ile gelen liste--------");
+            //foreach (var car in carManager.GetCarsByBrandId(2))
+            //{
+            //    Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
+            //}
+
+            //Console.WriteLine("--------GetCarsByColorId ile gelen liste--------");
+            //foreach (var car in carManager.GetCarsByColorId(2))
+            //{
+            //    Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
+            //}
+
+            Console.WriteLine("--------Cars--------");
+            foreach (var car in carManager.GetCarDetails())
             {
-                Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
+                Console.WriteLine("{0} {1} {2} {3} TL",car.BrandName,car.CarName,car.ColorName,car.DailyPrice);
             }
-
-            Console.WriteLine("--------GetCarsByBrandId ile gelen liste--------");
-            foreach (var car in carManager.GetCarsByBrandId(2))
-            {
-                Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
-            }
-
-            Console.WriteLine("--------GetCarsByColorId ile gelen liste--------");
-            foreach (var car in carManager.GetCarsByColorId(1))
-            {
-                Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
-            }
-
-            carManager.Add(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900000, Description = "Velar" });
-            Console.WriteLine("--------Eklemeden sonra GetAll ile gelen liste--------");
-            foreach (var car in carManager.GetAll())
-            {
-                Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
-            }
-
-
         }
     }
 }
