@@ -28,7 +28,7 @@ namespace ConsoleUI
             //Console.WriteLine(colorManager.GetById(1).Name);
 
             Console.WriteLine("--------Colors--------");
-            foreach (var color in colorManager.GetAll())
+            foreach (var color in colorManager.GetAll().Data)
             {
                 Console.WriteLine(color.Name);
             }
@@ -46,7 +46,7 @@ namespace ConsoleUI
             //Console.WriteLine(brandManager.GetById(1).Name);
 
             Console.WriteLine("--------Brands--------");
-            foreach (var brand in brandManager.GetAll())
+            foreach (var brand in brandManager.GetAll().Data)
             {
                 Console.WriteLine(brand.Name);
             }
@@ -56,9 +56,9 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            //carManager.Add(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900000, Description = "Velar" });
-            //carManager.Update(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 1000000, Description = "Velar" });
-            //carManager.Delete(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900000, Description = "Velar" });
+            //carManager.Add(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900, Description = "Velar" });
+            //carManager.Update(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 1000, Description = "Velar" });
+            //carManager.Delete(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900, Description = "Velar" });
             //Console.WriteLine(carManager.GetById(1).Description); 
 
             //Console.WriteLine("--------GetCarsByBrandId ile gelen liste--------");
@@ -72,12 +72,21 @@ namespace ConsoleUI
             //{
             //    Console.WriteLine(car.ModelYear + " " + car.Description + " : " + car.DailyPrice + " TL");
             //}
-
-            Console.WriteLine("--------Cars--------");
-            foreach (var car in carManager.GetCarDetails())
+            var result = carManager.GetCarDetails();
+            if (result.Success)
             {
-                Console.WriteLine("{0} {1} {2} {3} TL",car.BrandName,car.CarName,car.ColorName,car.DailyPrice);
+                foreach (var car in result.Data)
+                {
+                    Console.WriteLine("--------Cars--------");
+                    Console.WriteLine("{0} {1} {2} {3} TL", car.BrandName, car.CarName, car.ColorName, car.DailyPrice);
+                }
             }
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
+            
+            
         }
     }
 }
