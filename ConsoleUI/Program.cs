@@ -56,7 +56,7 @@ namespace ConsoleUI
         {
             CarManager carManager = new CarManager(new EfCarDal());
 
-            //carManager.Add(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900, Description = "Velar" });
+            //carManager.Add(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900, Description = "Velar" });          
             //carManager.Update(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 1000, Description = "Velar" });
             //carManager.Delete(new Car { Id = 6, BrandId = 3, ColorId = 2, ModelYear = 2020, DailyPrice = 900, Description = "Velar" });
             //Console.WriteLine(carManager.GetById(1).Description); 
@@ -75,9 +75,9 @@ namespace ConsoleUI
             var result = carManager.GetCarDetails();
             if (result.Success)
             {
+                Console.WriteLine("--------Cars--------");
                 foreach (var car in result.Data)
-                {
-                    Console.WriteLine("--------Cars--------");
+                {                
                     Console.WriteLine("{0} {1} {2} {3} TL", car.BrandName, car.CarName, car.ColorName, car.DailyPrice);
                 }
             }
