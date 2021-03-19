@@ -52,6 +52,8 @@ namespace Business.Concrete
 
         public IResult Update(Brand brand)
         {
+            ValidationTool.Validate(new BrandValidator(), brand);
+
             _brandDal.Update(brand);
             return new SuccessResult(Messages.BrandUpdated);
         }
