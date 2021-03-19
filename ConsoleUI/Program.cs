@@ -111,7 +111,7 @@ namespace ConsoleUI
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
 
-            customerManager.Add(new Customer { Id = 2, UserId = 2, CompanyName = "Kodlama.io" });
+            //customerManager.Add(new Customer { Id = 2, UserId = 2, CompanyName = "Kodlama.io" });
             //customerManager.Update(new Customer { Id = 2, UserId = 2, CompanyName = "Kodlama" });
             //customerManager.Delete(new Customer { Id = 2, UserId = 2, CompanyName = "Kodlama" });
             Console.WriteLine("--------Customers--------");
