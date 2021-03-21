@@ -42,6 +42,12 @@ namespace Business.Constants
         public static string RentalInvalid = "Kiralama işlemi için arabanın teslim edilmiş olması gerekmektedir";
         public static string RentalsListed = "Kiralama işlemleri listelendi";
 
+        public static string ImageAdded = "Resim eklendi";
+        public static string ImageDeleted = "Resim silindi";
+        public static string ImageUpdated = "Resim güncellendi";
+        public static string ImagesListed = "Resimler listelendi";
+
         public static string MaintenanceTime = "Sistem bakımda";
+        public static string CarImageLimitExceeded = "Bir arabanın 5'ten fazla resmi olamaz";
     }
 }
