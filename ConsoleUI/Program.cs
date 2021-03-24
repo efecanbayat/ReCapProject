@@ -20,7 +20,7 @@ namespace ConsoleUI
 
             //CustomerTest();
 
-            RentalTest();
+            //RentalTest();
 
         }
      
@@ -94,19 +94,7 @@ namespace ConsoleUI
             
             
         }
-        private static void UserTest()
-        {
-            UserManager userManager = new UserManager(new EfUserDal());
-
-            //userManager.Add(new User { Id = 2, FirstName = "Engin", LastName = "Demiroğ", Email = "engindemirog@gmail.com", Password = "654321" });
-            //userManager.Update(new User { Id = 2, FirstName = "Engin", LastName = "Demiroğ", Email = "engindemirog@hotmail.com", Password = "654321" });
-            //userManager.Delete(new User { Id = 2, FirstName = "Engin", LastName = "Demiroğ", Email = "engindemirog@hotmail.com", Password = "654321" });
-            Console.WriteLine("--------Users--------");
-            foreach (var user in userManager.GetAll().Data)
-            {
-                Console.WriteLine(user.FirstName + " " + user.LastName + " " + user.Email);
-            }
-        }
+        
         private static void CustomerTest()
         {
             CustomerManager customerManager = new CustomerManager(new EfCustomerDal());
