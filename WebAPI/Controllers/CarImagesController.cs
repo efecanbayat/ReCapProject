@@ -30,9 +30,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpGet("getbyid")]
-        public IActionResult GetById([FromForm(Name = ("Id"))] int Id)
+        public IActionResult GetById(int imageId)
         {
-            var result = _carImageService.GetById(Id);
+            var result = _carImageService.GetById(imageId);
             if (result.Success)
             {
                 return Ok(result);
@@ -40,9 +40,9 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("add")]
-        public IActionResult Add([FromForm] CarImage carImage,[FromForm(Name = ("Image"))] IFormFile file)
+        public IActionResult Add([FromForm(Name = ("Image"))] IFormFile formFile, [FromForm] CarImage carImage)
         {
-            var result = _carImageService.Add(carImage, file);
+            var result = _carImageService.Add(formFile, carImage);
             if (result.Success)
             {
                 return Ok(result);
@@ -61,10 +61,10 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
         [HttpPost("update")]
-        public IActionResult Update([FromForm(Name = ("Image"))] IFormFile file, [FromForm(Name = ("Id"))] int Id)
+        public IActionResult Update([FromForm(Name = ("Image"))] IFormFile formFile, [FromForm(Name = ("Id"))] int id)
         {
-            var carImage = _carImageService.GetById(Id).Data;
-            var result = _carImageService.Update(file,carImage);
+            var carImage = _carImageService.GetById(id).Data;
+            var result = _carImageService.Update(formFile,carImage);
             if (result.Success)
             {
                 return Ok(result);
